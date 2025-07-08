@@ -54,7 +54,8 @@
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="/assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
-
+    <link rel="stylesheet" href="/assets/bundles/datatables/datatables.min.css">
+    <link rel="stylesheet" href="/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
     <style>
         button {
             cursor: pointer;
@@ -63,6 +64,8 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
+
     <div class="loader"></div>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
@@ -85,8 +88,8 @@
                             <i data-feather="settings"></i>
                             <span class="d-sm-none d-lg-inline-block"></span></a>
                         <div class="dropdown-menu dropdown-menu-right pullDown">
-                            <div class="dropdown-title">{{Auth::user()->name}}</div>
-                            <a href="{{route('profile.edit')}}" class="dropdown-item has-icon"> <i
+                            <div class="dropdown-title">{{ Auth::user()->name }}</div>
+                            <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon"> <i
                                     class="far
 										fa-user"></i> Profile
                             </a>
@@ -98,7 +101,8 @@
                                 <x-responsive-nav-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                                    <btn type="submit" class="dropdown-item has-icon text-danger d-flex align-items-center"> <i
+                                    <btn type="submit"
+                                        class="dropdown-item has-icon text-danger d-flex align-items-center"> <i
                                             class="fas fa-sign-out-alt"></i>
                                         Logout
                                     </btn>
@@ -229,6 +233,10 @@
     <script src="/assets/js/scripts.js"></script>
     <!-- Custom JS File -->
     <script src="/assets/js/custom.js"></script>
+    <script src="/assets/bundles/datatables/datatables.min.js"></script>
+    <script src="/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Page Specific JS File -->
+    <script src="/assets/js/page/datatables.js"></script>
 </body>
 
 
