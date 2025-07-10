@@ -51,6 +51,8 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/bundles/summernote/summernote-bs4.css">
+     <link rel="stylesheet" href="/assets/bundles/select2/dist/css/select2.min.css">
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="/assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
@@ -226,11 +228,13 @@
     <!-- General JS Scripts -->
     <script src="/assets/js/app.min.js"></script>
     <!-- JS Libraies -->
+    <script src="/assets/bundles/summernote/summernote-bs4.js"></script>
     <script src="/assets/bundles/apexcharts/apexcharts.min.js"></script>
     <!-- Page Specific JS File -->
     <script src="/assets/js/page/index.js"></script>
     <!-- Template JS File -->
     <script src="/assets/js/scripts.js"></script>
+    <script src="/assets/bundles/select2/dist/js/select2.full.min.js"></script>
     <!-- Custom JS File -->
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/bundles/datatables/datatables.min.js"></script>

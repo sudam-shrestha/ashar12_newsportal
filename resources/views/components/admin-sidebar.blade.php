@@ -22,6 +22,10 @@
              <a href="{{ route('admin.advertise.index') }}" class="nav-link"><i
                      class="fas fa-image"></i><span>Advertise</span></a>
          </li>
+          <li class="dropdown {{ Request::routeIs('admin.article*') ? 'active' : '' }}">
+             <a href="{{ route('admin.article.index') }}" class="nav-link"><i
+                     class="fas fa-image"></i><span>Articles</span></a>
+         </li>
          {{-- <li class="dropdown">
              <a href="#" class="menu-toggle nav-link has-dropdown"><i
                      data-feather="briefcase"></i><span>Widgets</span></a>
