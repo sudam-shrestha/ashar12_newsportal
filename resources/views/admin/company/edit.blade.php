@@ -55,12 +55,12 @@
 
                                     <div class="col-12 mb-4">
                                         <label for="keywords">Enter Meta Keywords (for SEO)</label>
-                                        <textarea name="keywords" id="keywords" class="form-control"> value="{{ $company->meta_keywords }}"</textarea>
+                                        <textarea name="keywords" id="keywords" class="form-control"> {{ $company->meta_keywords }}</textarea>
                                     </div>
 
                                     <div class="col-12 mb-4">
                                         <label for="description">Enter Meta Description (for SEO)</label>
-                                        <textarea name="description" id="description" class="form-control"> value="{{ $company->meta_description }}"</textarea>
+                                        <textarea name="description" id="description" class="form-control"> {{ $company->meta_description }}</textarea>
                                     </div>
 
                                     <div class="col-6 mb-4">

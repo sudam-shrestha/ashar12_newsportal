@@ -13,7 +13,6 @@
 
 <body>
     <x-frontend-header />
-    <h1 class="text-[red] text-[50px]">hello</h1>
     <main>
         {{ $slot }}
     </main>
