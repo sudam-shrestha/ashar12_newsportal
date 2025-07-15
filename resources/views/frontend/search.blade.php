@@ -1,11 +1,13 @@
-<x-frontend-layout :title="$category->title" :description="$category->meta_description" :keywords="$category->meta_keywords">
+<x-frontend-layout>
     <section>
         <div class="container grid grid-cols-3 py-10 gap-8">
             <div class="col-span-2 space-y-6">
+                <h1>
+                    Search result for "{{ $q }}"
+                </h1>
                 @foreach ($articles as $article)
                     <x-article-card :article="$article" />
                 @endforeach
-                {{ $articles->links() }}
             </div>
 
             {{-- Advertise --}}

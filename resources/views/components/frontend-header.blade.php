@@ -4,7 +4,11 @@
             <img class="h-[50px] md:h-[100px]" src="{{ asset($company->logo) }}" alt="{{ $company->name }}">
         </div>
         <div>
-            <p class="text-sm md:text-lg">आइतबार, २९ असार २०८२</p>
+            <p class="text-sm md:text-lg">
+                {{ $date }}
+
+                {{-- {{  toFormattedNepaliBSDate(\Carbon\Carbon::now()) }} --}}
+            </p>
             <img class="h-[10px] md:h-[20px]" src="https://jawaaf.com/frontend/images/redline.png" alt="">
         </div>
     </div>
@@ -12,13 +16,16 @@
     <nav class="bg-[var(--primary)] text-white py-2">
         <div class="container hidden lg:flex justify-between items-center">
             <div class="flex gap-8">
-                <a href="">गृहपृष्ठ</a>
+                <a href="{{ route('home') }}">गृहपृष्ठ</a>
                 @foreach ($categories as $category)
-                    <a href="">{{ $category->title }}</a>
+                    <a href="{{ route('category', $category->slug) }}">{{ $category->title }}</a>
                 @endforeach
             </div>
-            <div>
-                <input type="text" name="q" id="q" placeholder="Search">
+            <div class="text-[var(--text-color)]">
+                <form action="{{ route('search') }}" method="get">
+                    <input type="text" name="q" id="q" placeholder="Search">
+                    <button type="submit">search</button>
+                </form>
             </div>
         </div>
 
@@ -60,9 +67,9 @@
             <input type="text" name="q" id="q" placeholder="Search">
         </div>
         <div class="flex flex-col gap-8 mt-5">
-            <a href="">गृहपृष्ठ</a>
+            <a href="{{ route('home') }}">गृहपृष्ठ</a>
             @foreach ($categories as $category)
-                <a href="">{{ $category->title }}</a>
+                <a href="{{ route('category', $category->slug) }}">{{ $category->title }}</a>
             @endforeach
         </div>
     </div>
