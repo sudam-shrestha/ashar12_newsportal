@@ -11,6 +11,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
@@ -33,6 +34,12 @@ class ApiController extends Controller
         return ArticleResource::collection($latest_articles);
     }
 
+    public function article($id)
+    {
+        $article = Article::findOrFail($id);
+        return new ArticleResource($article);
+    }
+
     public function trending_articles()
     {
         $trending_articles = Article::orderBy('views', 'desc')->limit(5)->get();
@@ -47,6 +54,7 @@ class ApiController extends Controller
 
     public function category(Request $request)
     {
+        return Auth::user();
         $validator = Validator::make($request->all(), [
             "title" => "required|unique:categories,title",
             "slug" => "required|unique:categories,slug",
@@ -69,6 +77,45 @@ class ApiController extends Controller
         return response()->json([
             "success" => true,
             "message" => "Category Created Successfully"
+        ]);
+    }
+
+    public function category_edit(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            "title" => "required",
+            "slug" => "required",
+        ]);
+
+        if ($validator->fails()) {
+            return  response()->json([
+                "success" => false,
+                "message" => $validator->errors()
+            ]);
+        }
+
+        $category = Category::find($id);
+        $category->title = $request->title;
+        $category->slug = $request->slug;
+        $category->meta_keywords = $request->keywords;
+        $category->meta_description = $request->description;
+        $category->save();
+
+        return response()->json([
+            "success" => true,
+            "message" => "Category Updated Successfully"
+        ]);
+    }
+
+    public function category_delete($id)
+    {
+        $category = Category::find($id);
+
+        $category->delete();
+
+        return response()->json([
+            "success" => true,
+            "message" => "Category Deleted Successfully"
         ]);
     }
 }

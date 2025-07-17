@@ -17,11 +17,12 @@ class CategoryResource extends JsonResource
         // return parent::toArray($request);
 
         return [
+            "id" => $this->id,
             "title" => $this->title,
             "slug" => $this->slug,
             "meta_keywords" => $this->meta_keywords,
             "meta_description" => $this->meta_description,
-            "articles" => $this->articles,
+            "articles" => ArticleResource::collection($this->articles),
         ];
     }
 }
