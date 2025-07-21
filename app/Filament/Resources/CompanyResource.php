@@ -6,6 +6,7 @@ use App\Filament\Resources\CompanyResource\Pages;
 use App\Filament\Resources\CompanyResource\RelationManagers;
 use App\Models\Company;
 use Filament\Forms;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -18,6 +19,11 @@ class CompanyResource extends Resource
     protected static ?string $model = Company::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationGroup = "Settings";
+    protected static ?string $modelLabel = "Company";
+    protected static ?string $pluralModelLabel = "Company";
+
 
     public static function canCreate(): bool
     {
@@ -54,8 +60,23 @@ class CompanyResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('logo')
                     ->required(),
+
+                Repeater::make("Company Contacts")
+                    ->relationship("company_contacts")
+                    ->columnSpanFull()
+                    ->grid(2)
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('number')
+                            ->tel()
+                            ->maxLength(10)
+                            ->required(),
+                    ]),
             ]);
     }
+
 
     public static function table(Table $table): Table
     {
